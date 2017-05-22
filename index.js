@@ -10,7 +10,7 @@ app.get('/favicon.ico', (req, res) => res.sendStatus())
 
 app.get('/:wallet', (req, res) => {
   const wallet = req.params.wallet
-  const url = `${ROOT_URL}/${id}`
+  const url = `${ROOT_URL}/${wallet}`
 
   return axios.get(url)
     .then((response) => {
