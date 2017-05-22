@@ -6,11 +6,12 @@ const PORT = 5000
 const ROOT_URL = 'https://ethermine.org/api/miner_new'
 
 app.use(cors())
-
 app.get('/favicon.ico', (req, res) => res.sendStatus())
+
 app.get('/:wallet', (req, res) => {
-  const wallet = req.params.wallet;
+  const wallet = req.params.wallet
   const url = `${ROOT_URL}/${id}`
+
   return axios.get(url)
     .then((response) => {
       const data = response.data
