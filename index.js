@@ -6,7 +6,7 @@ const PORT = 5000
 const ROOT_URL = 'https://ethermine.org/api/miner_new'
 
 app.use(cors())
-app.get('/favicon.ico', (req, res) => res.sendStatus())
+app.get('/favicon.ico', (req, res) => res.sendStatus(200))
 
 app.get('/:wallet', (req, res) => {
   const wallet = req.params.wallet
