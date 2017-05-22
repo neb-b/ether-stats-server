@@ -1,26 +1,19 @@
 const express = require('express')
 const axios = require('axios')
+const cors = require('cors')
 const app = express()
-
 const PORT = 5000
 const ROOT_URL = 'https://ethermine.org/api/miner_new'
-const WALLET = 'be6Ab449bBa5E9e8E5A81d76D860EFcB4Acaa10F'
-const FETCH_URL = `${ROOT_URL}/${WALLET}`
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  res.header('Access-Control-Allow-Credentials', true)
-  next()
-})
+app.use(cors())
 
 app.get('/favicon.ico', (req, res) => res.sendStatus())
-
-app.get('/', (req, res) => {
-  return axios.get(FETCH_URL)
+app.get('/:wallet', (req, res) => {
+  const wallet = req.params.wallet;
+  const url = `${ROOT_URL}/${id}`
+  return axios.get(url)
     .then((response) => {
       const data = response.data
-      console.log('data', data);
       res.send(data)
     })
     .catch((err) => {
