@@ -10,14 +10,13 @@ const FETCH_URL = `${ROOT_URL}/${WALLET}`
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.header('Access-Control-Allow-Credentials', true)
   next()
 })
 
-app.get('/favicon.ico', (req, res) => res.sendStatus(200))
+app.get('/favicon.ico', (req, res) => res.sendStatus())
 
 app.get('/', (req, res) => {
-  console.log('request..');
-  console.log('fetch', FETCH_URL);
   return axios.get(FETCH_URL)
     .then((response) => {
       const data = response.data
